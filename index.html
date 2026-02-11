@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIMIRU VENTURES</title>
+    <title>KIMIRU VENTURES - Kenya Billing Tool</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,7 +12,7 @@
         <header>
             <div class="logo">
                 <div class="logo-icon">
-                    <i class="fas fa-building"></i>
+                    <i class="fas fa-file-invoice-dollar"></i>
                 </div>
                 <div class="logo-text">KIMIRU VENTURES</div>
             </div>
@@ -50,13 +50,13 @@
                 
                 <div class="form-group">
                     <label for="companyName">Company Name</label>
-                    <input type="text" id="companyName" value="KIMIRU VENTURES">
+                    <input type="text" id="companyName" value="QuickBill Solutions Kenya">
                 </div>
                 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="companyEmail">Email</label>
-                        <input type="email" id="companyEmail" value="info@kimiruventures.co.ke">
+                        <input type="email" id="companyEmail" value="info@Kimiru.co.ke">
                     </div>
                     <div class="form-group">
                         <label for="companyPhone">Phone</label>
@@ -66,23 +66,23 @@
                 
                 <div class="form-group">
                     <label for="companyAddress">Address</label>
-                    <textarea id="companyAddress" rows="2">Maua Business Centre Meru, Kenya</textarea>
+                    <textarea id="companyAddress" rows="2">Westlands Business Centre, Nairobi, Kenya</textarea>
                 </div>
                 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="clientName">Client Name</label>
-                        <input type="text" id="clientName" value="Buyer Corporation Ltd">
+                        <input type="text" id="clientName" value="Acme Corporation Ltd">
                     </div>
                     <div class="form-group">
                         <label for="clientEmail">Client Email</label>
-                        <input type="email" id="clientEmail" value="accounts@kimiruventures.co.ke">
+                        <input type="email" id="clientEmail" value="accounts@acmecorp.co.ke">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="clientAddress">Client Address</label>
-                    <textarea id="clientAddress" rows="2">Mombasa Road Nairobi, Kenya</textarea>
+                    <textarea id="clientAddress" rows="2">Mombasa Road\nNairobi, Kenya</textarea>
                 </div>
                 
                 <div class="form-row">
@@ -96,7 +96,7 @@
                     </div>
                 </div>
                 
-                <h3 class="panel-title" style="margin-top: 30px;">Products</h3>
+                <h3 class="panel-title" style="margin-top: 30px;">Items & Services</h3>
                 
                 <table class="items-table">
                     <thead>
@@ -118,6 +118,77 @@
                     <button class="btn btn-secondary" id="addItemBtn">
                         <i class="fas fa-plus"></i> Add Item
                     </button>
+                </div>
+                
+                <!-- Batch Upload Section -->
+                <div class="form-group">
+                    <h3 class="panel-title" style="margin-top: 30px;">Batch Upload Items</h3>
+                    <div class="batch-upload-container">
+                        <div class="upload-instructions">
+                            <p><strong>How to use:</strong></p>
+                            <ol>
+                                <li>Copy data from Excel/Google Sheets (columns: Description, Quantity, Price)</li>
+                                <li>Paste into the textarea below</li>
+                                <li>Click "Process Batch" to add all items at once</li>
+                            </ol>
+                            <p><strong>Format example:</strong></p>
+                            <pre style="background: #f5f5f5; padding: 10px; border-radius: 5px; font-size: 0.9rem;">
+Website Design    1   120000
+Web Hosting       1   29900
+SEO Optimization  1   50000
+Domain Registration   2   1500</pre>
+                        </div>
+                        
+                        <div class="file-upload-area" id="fileUploadArea">
+                            <div class="upload-area-content">
+                                <div class="upload-area-icon">
+                                    <i class="fas fa-file-excel"></i>
+                                </div>
+                                <div class="upload-area-text">Or upload a file</div>
+                                <div class="upload-area-subtext">CSV, TSV, or text files</div>
+                                <button type="button" class="btn btn-outline" id="selectFileBtn">
+                                    <i class="fas fa-folder-open"></i> Select File
+                                </button>
+                            </div>
+                        </div>
+                        <input type="file" id="fileInput" accept=".csv,.txt,.tsv" style="display: none;">
+                        
+                        <div class="form-group">
+                            <label for="batchItems">Paste Items (Tab or comma separated):</label>
+                            <textarea id="batchItems" rows="6" placeholder="Paste your items here. Each line should contain: Description [tab] Quantity [tab] Price
+Example:
+Website Design    1   120000
+Web Hosting       1   29900"></textarea>
+                        </div>
+                        
+                        <div class="import-options">
+                            <div class="option-radio">
+                                <input type="radio" id="importAppend" name="importOption" value="append" checked>
+                                <label for="importAppend">Append to existing items</label>
+                            </div>
+                            <div class="option-radio">
+                                <input type="radio" id="importReplace" name="importOption" value="replace">
+                                <label for="importReplace">Replace all items</label>
+                            </div>
+                        </div>
+                        
+                        <div class="batch-buttons">
+                            <button class="btn btn-secondary" id="processBatchBtn">
+                                <i class="fas fa-upload"></i> Process Batch
+                            </button>
+                            <button class="btn btn-outline" id="clearBatchBtn">
+                                <i class="fas fa-times"></i> Clear
+                            </button>
+                            <button class="btn btn-outline" id="downloadTemplateBtn">
+                                <i class="fas fa-download"></i> Download Template
+                            </button>
+                        </div>
+                        
+                        <div class="batch-stats" id="batchStats" style="display: none; margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+                            <p><strong>Batch Summary:</strong> <span id="itemsCount">0</span> items ready to import</p>
+                            <div id="batchPreview" style="max-height: 200px; overflow-y: auto; margin-top: 10px;"></div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="form-group">
@@ -148,11 +219,11 @@
         </div>
         
         <footer>
-            <p>QuickBill KES - Kenya Billing Tool &copy; 2023 | All amounts in Kenya Shillings (KES)</p>
+            <p>KIMIRU VENTURES - 0714788348 &copy; 2023 | All amounts in Kenya Shillings (KES)</p>
         </footer>
     </div>
 
-    <!-- JavaScript Files - Fixed order and removed module type for compatibility -->
+    <!-- JavaScript Files -->
     <script src="utils.js"></script>
     <script src="logo-upload.js"></script>
     <script src="data-manager.js"></script>
