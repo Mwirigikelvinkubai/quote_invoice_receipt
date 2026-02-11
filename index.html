@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIMIRU VENTURES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="logo-text">KIMIRU VENTURES</div>
+            </div>
+            <div class="document-actions">
+                <button class="btn btn-success" id="printBtn">
+                    <i class="fas fa-print"></i> Print Document
+                </button>
+            </div>
+        </header>
+
+        <div class="tool-selector">
+            <button class="tool-btn active" data-type="quotation">Quotation</button>
+            <button class="tool-btn" data-type="invoice">Invoice</button>
+            <button class="tool-btn" data-type="receipt">Receipt</button>
+        </div>
+
+        <div class="main-content">
+            <div class="editor-panel">
+                <h2 class="panel-title">Edit Document Details</h2>
+                
+                <div class="form-group">
+                    <label for="logoFile">Company Logo</label>
+                    <div class="logo-upload-container" id="logoUpload">
+                        <div class="logo-preview" id="logoPreview">
+                            <img src="" alt="Logo Preview" id="logoPreviewImg">
+                        </div>
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <p>Click to upload company logo</p>
+                        <p style="font-size: 0.8rem; color: var(--gray-color); margin-top: 5px;">Recommended: 200x80px PNG or JPG</p>
+                        <input type="file" id="logoFile" accept="image/*">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="companyName">Company Name</label>
+                    <input type="text" id="companyName" value="KIMIRU VENTURES">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="companyEmail">Email</label>
+                        <input type="email" id="companyEmail" value="info@kimiruventures.co.ke">
+                    </div>
+                    <div class="form-group">
+                        <label for="companyPhone">Phone</label>
+                        <input type="text" id="companyPhone" value="+254 714 788 348">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="companyAddress">Address</label>
+                    <textarea id="companyAddress" rows="2">Maua Business Centre Meru, Kenya</textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="clientName">Client Name</label>
+                        <input type="text" id="clientName" value="Buyer Corporation Ltd">
+                    </div>
+                    <div class="form-group">
+                        <label for="clientEmail">Client Email</label>
+                        <input type="email" id="clientEmail" value="accounts@kimiruventures.co.ke">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="clientAddress">Client Address</label>
+                    <textarea id="clientAddress" rows="2">Mombasa Road Nairobi, Kenya</textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="documentNumber">Document #</label>
+                        <input type="text" id="documentNumber" value="QB-2023-001">
+                    </div>
+                    <div class="form-group">
+                        <label for="documentDate">Date</label>
+                        <input type="date" id="documentDate" value="">
+                    </div>
+                </div>
+                
+                <h3 class="panel-title" style="margin-top: 30px;">Products</h3>
+                
+                <table class="items-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Description</th>
+                            <th>Qty</th>
+                            <th>Price (KES)</th>
+                            <th>Total (KES)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsBody">
+                        <!-- Items will be added here dynamically -->
+                    </tbody>
+                </table>
+                
+                <div class="form-group">
+                    <button class="btn btn-secondary" id="addItemBtn">
+                        <i class="fas fa-plus"></i> Add Item
+                    </button>
+                </div>
+                
+                <div class="form-group">
+                    <label for="terms">Terms & Notes</label>
+                    <textarea id="terms" rows="4">Payment due within 30 days. Payments to be made in Kenya Shillings (KES). Late fees of 5% may apply for payments received after the due date.</textarea>
+                </div>
+            </div>
+            
+            <div class="preview-panel">
+                <h2 class="panel-title">Document Preview</h2>
+                
+                <div class="document-preview" id="documentPreview">
+                    <!-- Document preview will be rendered here -->
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="downloadPdfBtn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                    <button class="btn btn-success" id="saveDocumentBtn">
+                        <i class="fas fa-save"></i> Save Document
+                    </button>
+                    <button class="btn btn-danger" id="clearAllBtn">
+                        <i class="fas fa-trash"></i> Clear All
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>QuickBill KES - Kenya Billing Tool &copy; 2023 | All amounts in Kenya Shillings (KES)</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript Files - Fixed order and removed module type for compatibility -->
+    <script src="utils.js"></script>
+    <script src="logo-upload.js"></script>
+    <script src="data-manager.js"></script>
+    <script src="print-manager.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

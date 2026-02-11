@@ -1,0 +1,22 @@
+{
+  "name": "quickbill-kes",
+  "version": "1.0.0",
+  "description": "Kenya Billing Tool for quotations, invoices, and receipts",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "billing",
+    "invoice",
+    "quotation",
+    "receipt",
+    "kenya",
+    "kes"
+  ],
+  "author": "QuickBill Solutions",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
