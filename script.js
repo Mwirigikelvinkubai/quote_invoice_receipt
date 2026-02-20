@@ -189,7 +189,7 @@ function calculateTotals() {
         subtotal += item.quantity * item.price;
     });
     
-    const taxRate = 0.16; // 16% VAT for Kenya
+    const taxRate = 0; // 16% VAT for Kenya will change to on and off
     const tax = subtotal * taxRate;
     const total = subtotal + tax;
     
