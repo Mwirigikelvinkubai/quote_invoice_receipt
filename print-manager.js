@@ -15,26 +15,18 @@ function formatCurrency(amount) {
 
 // Print document
 function printDocument() {
-    // Get current preview content
-    const previewContent = document.getElementById('documentPreview').innerHTML;
-    
-    // Create a print window
-    const printWindow = window.open('', '_blank');
-    
-    // Get document data for print
+    const previewContent = document.getElementById('documentPreview');
     const documentData = gatherPrintData();
-    
-    // Generate print HTML
-    printWindow.document.write(generatePrintHTML(previewContent, documentData));
-    printWindow.document.close();
-    
-    // Wait for content to load, then print
-    printWindow.onload = function() {
-        printWindow.focus();
-        printWindow.print();
-        // Optional: close after printing
-        // printWindow.close();
+
+    const options = {
+        margin:       [15, 15, 15, 15], // mm
+        filename:     `${documentData.documentNumber || 'document'}.pdf`,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
+
+    html2pdf().set(options).from(previewContent).save();
 }
 
 // Gather data for print
@@ -42,7 +34,7 @@ function gatherPrintData() {
     return {
         companyName: document.getElementById('companyName').value,
         documentNumber: document.getElementById('documentNumber').value,
-        documentType: window.currentDocumentType || 'quotation',
+        documentType: window.currentDocumentType || 'qotation',
         items: window.items || [],
         date: document.getElementById('documentDate').value
     };
